@@ -6,19 +6,19 @@ exports.plugin = {
 			message: require("./controller")
 		};
 
-        // plugin.route([
-		// 	{
-		// 		method: 'GET',
-		// 		path: '/create/addressee',
-		// 		config: Controller.addressee.getAllAddressee
-		// 	}
-		// ]);
+		plugin.route([
+			{
+				method: "POST",
+				path: "/create/schedulerMessage",
+				config: Controller.message.createMessage
+			}
+		]);
 
 		plugin.route([
 			{
-				method: 'POST',
-				path: '/create/schedulerMessage',
-				config: Controller.message.createMessage
+				method: "GET", 
+				path: "/consulting/schedulerMessage/{messageId}",
+				config: Controller.message.consultingMessage
 			}
 		]);
 	},

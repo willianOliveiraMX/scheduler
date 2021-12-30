@@ -9,7 +9,7 @@ const init = async () => {
     const database = knex({ ...knexConfig.development });
 
     const server = Hapi.server({
-        port: 3000,
+        port: 5000,
         host: 'localhost'
     });
 
@@ -46,7 +46,6 @@ const init = async () => {
 };
 
 process.on('unhandledRejection', (err) => {
-
     console.log(err);
     process.exit(1);
 });

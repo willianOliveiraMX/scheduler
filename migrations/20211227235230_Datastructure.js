@@ -25,7 +25,7 @@ exports.up = function(knex) {
             messageTable.increments();
 
             messageTable.text( "text" ).notNullable();
-            messageTable.date( "timeToSend" ).notNullable();
+            messageTable.dateTime( "timeToSend" ).notNullable();
             messageTable.enu( "status", ["waiting", "sended", "canceled"] ).notNullable().defaultTo("waiting");
         })
 
@@ -36,9 +36,9 @@ exports.up = function(knex) {
             addresseeMessage.integer('addresseeId',11).unsigned().references('id').inTable('addressee');
         })
 
-        .createTable("addresse_communication_type", function(messageCommunicationType) {
+        .createTable("message_communication_type", function(messageCommunicationType) {
             messageCommunicationType.increments();
-            messageCommunicationType.integer('addresseeId',11).unsigned().references('id').inTable('addressee');
+            messageCommunicationType.integer('messageId',11).unsigned().references('id').inTable('message');
             messageCommunicationType.integer('communicationTypeId',11).unsigned().references('id').inTable('communication_type');
         })
 };
@@ -50,5 +50,5 @@ exports.down = function(knex) {
             .dropTableIfExists( "communication_type" )
             .dropTableIfExists( "message" )
             .dropTableIfExists( "addressee_message" )
-            .dropTableIfExists( "addresse_communication_type" );
+            .dropTableIfExists( "message_communication_type" );
 };
