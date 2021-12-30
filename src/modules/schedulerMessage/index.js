@@ -11,10 +11,12 @@ exports.plugin = {
 				method: "POST",
 				path: "/create/schedulerMessage",
 				config: Controller.message.createMessage
-			}
-		]);
-
-		plugin.route([
+			},
+			{
+				method: "PUT",
+				path: "/cancel/schedulerMessage",
+				config: Controller.message.cancelMessage
+			},
 			{
 				method: "GET", 
 				path: "/consulting/schedulerMessage/{messageId}",

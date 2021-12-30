@@ -39,3 +39,14 @@ exports.consultingMessage = {
         return reply.response({ content: messageConsult });
     }
 }
+
+exports.cancelMessage = {
+    description: "Cancelling message.", 
+    handler: async (request, reply) => {
+        
+        console.log(request.payload);
+        const messageCancel = await service.messageService.cancelMessage(request, request.payload.messageId, reply);
+
+        return reply.response({ content: messageCancel });
+    }
+} 
