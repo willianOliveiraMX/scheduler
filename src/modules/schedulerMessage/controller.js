@@ -5,7 +5,7 @@ const messageCommService = require("../messageCommunicationType/service");
 const addresseMessageService = require("../addresseeMessage/service");
 const { errors } = require("../../helpers/messageErrors");
 
-const { schedulerSchema } = require("./schedulerSchema");
+const { schedulerSchema, cancelSchedulerSchema, consultingSchedulerSchema } = require("./schedulerSchema");
 
 exports.createMessage = {
     description: "Create a new message.",
@@ -44,21 +44,30 @@ exports.createMessage = {
 
 exports.consultingMessage = {
     description: "Consulting message status.",
+    validate: {
+        params: consultingSchedulerSchema
+    },
     handler: async (request, reply) => {
-        console.log("consulting message here: ", request.params.messageId);
-
         const messageConsult = await service.messageService.consultingMessage(request, request.params.messageId, reply);
+        console.log(request.params.messageId);
+        if (!messageConsult.messageId) {
+            return reply.response({ error: errors.contentNotFind }).code(404);
+        }
+
         return reply.response({ content: messageConsult });
     }
 }
 
 exports.cancelMessage = {
     description: "Cancelling message.", 
+    validate: {
+        payload: cancelSchedulerSchema
+    },
     handler: async (request, reply) => {
-        
-        console.log(request.payload);
         const messageCancel = await service.messageService.cancelMessage(request, request.payload.messageId, reply);
-
+        if (!messageCancel.length) {
+            return reply.response({ error: errors.validMessageId }).code(404);
+        }
         return reply.response({ content: messageCancel });
     }
 } 

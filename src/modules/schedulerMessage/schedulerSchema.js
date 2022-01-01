@@ -22,3 +22,19 @@ exports.schedulerSchema = Joi.object({
             .items(Joi.number().integer())
             .error(new Error(errors.validAddresseeIds)),
 });
+
+exports.cancelSchedulerSchema = Joi.object({
+     messageId: Joi
+            .number()
+            .integer()
+            .required()
+            .error(new Error(errors.validMessageId)),
+});
+
+exports.consultingSchedulerSchema = Joi.object({
+        messageId: Joi
+               .number()
+               .integer()
+               .required()
+               .error(new Error(errors.validMessageId)),
+});

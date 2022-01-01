@@ -1,5 +1,7 @@
 'use strict';
 
+const { errors } = require("../../helpers/messageErrors");
+
 exports.messageService = {
     createNewMessage: async (request, newMessage, reply) => {
         const result = await request.insert({ 
@@ -26,7 +28,7 @@ exports.messageService = {
             const [ firstResult = {} ] = result;
             return { ...firstResult, addressees: addresseeRelatedList};
         } catch (error) {
-            return reply.response({ error: "some error occurured." }.code(500));
+            return reply.response({ error: errors.generalServerError }.code(500));
         }
     }, 
     cancelMessage: async (request, messageId, reply) => {
@@ -38,8 +40,7 @@ exports.messageService = {
 
             return result;
         } catch (error) {
-            console.log(error);
-            return reply.response({ error: "some error occurured." });
+            return reply.response({ error: errors.generalServerError });
         }
     }
 }
