@@ -2,17 +2,13 @@
 
 exports.messageService = {
     createNewMessage: async (request, newMessage, reply) => {
-        try {
-            const result = await request.database.insert({ 
-                text: newMessage.text,
-                timeToSend: newMessage.timeToSend,
-            })
-            .returning('id')
-            .from("message");
-            return result;
-        } catch (error) {
-            return reply.response({ error: "some error occurured." });
-        }
+        const result = await request.insert({ 
+            text: newMessage.text,
+            timeToSend: newMessage.timeToSend,
+        })
+        .returning('*')
+        .from("message");
+        return result;
     },
     consultingMessage: async (request, messageId, reply) => {
         try {
@@ -28,11 +24,9 @@ exports.messageService = {
                 .innerJoin("addressee", "addressee.id", "addressee_message.addresseeId")
         
             const [ firstResult = {} ] = result;
-            console.log(addresseeRelatedList);
             return { ...firstResult, addressees: addresseeRelatedList};
         } catch (error) {
-            console.log(error);
-            return reply.response({ error: "some error occurured." });
+            return reply.response({ error: "some error occurured." }.code(500));
         }
     }, 
     cancelMessage: async (request, messageId, reply) => {

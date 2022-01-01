@@ -2,16 +2,12 @@
 
 exports.messageCommunicationType = {
     createMessageCommType: async (request, messageId, communicationTypeId) => {
-        try {
-            const result = await request.database.insert({
+            const result = await request.insert({
                 messageId: parseInt(messageId), 
                 communicationTypeId: parseInt(communicationTypeId),
             })
             .returning('*')
             .from("message_communication_type");
         return result;
-        } catch (error) {
-            console.log(error);
-        }
     }
 }

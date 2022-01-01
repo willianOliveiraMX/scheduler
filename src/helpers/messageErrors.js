@@ -8,4 +8,9 @@ exports.errors = {
     pushUserIdAlreadyExist: "This pushUserId already exists on database",
     generalServerError: "Some error has occurred.",
     validPageNumber: "Page have to be a number.",
+    validText: "Text field is required and have to be a minimum of 1 character and maximum 250",
+    validDate: "Date is required in a valid format and have to be greater than now.",
+    validCommunicationTypeId: "CommunicationTypeId is required and have to be a valid ID.",
+    validAddresseeIds: "AddresseeIds is required and have to be a list of valid ID's.",
+    someOfaddresseeIdsIsFailed: "One or more of the ID's provider in addresseeIds do not exist."
 };
