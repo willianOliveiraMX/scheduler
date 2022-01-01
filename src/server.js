@@ -30,16 +30,8 @@ const init = async () => {
             const a = await request.database.select("description").from("communication_type");
             console.log(a);
             return 'Hello World!';
-        }
+        },
     });
-
-    // server.route({
-    //     method: "POST",
-    //     path: "/create/schedulerMessage",
-    //     handler: async (request, reply) => {
-    //         return "Agendamento criado com sucesso!"
-    //     }
-    // });
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

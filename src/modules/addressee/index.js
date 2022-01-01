@@ -1,7 +1,7 @@
 'use strict';
 
 exports.plugin = {
-	register: (plugin, options) => {
+	register: (plugin) => {
 		const Controller = {
 			addressee: require("./controller")
 		};
@@ -9,16 +9,13 @@ exports.plugin = {
         plugin.route([
 			{
 				method: 'GET',
-				path: '/create/addressee',
-				config: Controller.addressee.getAllAddressee
-			}
-		]);
-
-		plugin.route([
+				path: '/list/addressee/',
+				config: Controller.addressee.getAllAddressee,
+			},
 			{
 				method: 'POST',
 				path: '/create/addressee',
-				config: Controller.addressee.createAddressee
+				config: Controller.addressee.createAddressee,
 			}
 		]);
 	},

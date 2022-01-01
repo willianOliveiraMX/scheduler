@@ -1,14 +1,20 @@
 'use strict';
 
+const { errors } = require("../../helpers/messageErrors");
+
+
 exports.addresseeService = {
     getAllAddresssees: async (request, reply) => {
         try {
-            const result = await request.database.select("*").where({ isValid: true }).from("addressee");
-            console.log(result);
+            const pageNumber = request.query.page ? parseInt(request.query.page) : 1;
+
+            const limitPerPage = 10; 
+            const offset = (pageNumber * limitPerPage) - limitPerPage;
+
+            const result = await request.database.select("*").where({ isValid: true }).limit(10).offset(offset).from("addressee");
             return reply.response({ content: result})
         } catch (error) {
-            console.log(error);
-            return reply.response({ error: "some error has ocurrured." })
+            return reply.response({ error: error.generalServerError }).code(500)
         }
     },
     createNewAddressee: async (request, addressee, reply) => {
@@ -20,10 +26,22 @@ exports.addresseeService = {
                 phoneNumber: addressee.phoneNumber,
                 pushUserId: addressee.pushUserId,
                 created_at: new Date(),
-            }).from("addressee");
-            return reply.response({ content: "addressee created!" });
+            })
+            .returning('*')
+            .from("addressee");
+            return reply.response({ message: "Addressee success created!", content: result });
         } catch (error) {
-            return reply.response({ error: "some error occurured." });
+            if (error.constraint === "addressee_email_unique") {
+                return reply.response({
+                    error: errors.emailAlreadyExist
+                }).code(409);
+            }
+            if (error.constraint === "addressee_pushuserid_unique") {
+                return reply.response({
+                    error: errors.pushUserIdAlreadyExist
+                }).code(409);
+            }
+            return reply.response({ error: error.generalServerError }).code(500);
         }
     }
 }
