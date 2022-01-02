@@ -7,10 +7,12 @@ const knexConfig = require("../knexfile");
 exports.init = async () => {
 
     const database = knex({ ...knexConfig.development });
+    
+    const environmentDevelopment = process.argv.find(el => el === "development");
 
     const server = Hapi.server({
         port: 5000,
-        // host: 'localhost'
+        ...(environmentDevelopment ? {host: "localhost"} : {})
     });
 
     await server.register([ 

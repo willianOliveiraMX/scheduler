@@ -1,3 +1,6 @@
+require("dotenv").config();
+const environmentDevelopment = process.argv.find(el => el === "development");
+
 module.exports = {
 
     development: {
@@ -8,14 +11,14 @@ module.exports = {
         client: 'postgres',
         connection: {
 
-            host: 'db',
+            host: environmentDevelopment ? "localhost" : "db",
 
-            user: 'postgres',
-            password: 'admin123',
+            user: environmentDevelopment ? process.env.DB_user : "postgres",
+            password: environmentDevelopment ? process.env.DB_password : "admin123",
 
-            database: 'SchedulerData',
+            database: environmentDevelopment ? process.env.DB_name : "SchedulerData",
             charset: 'utf8',
-
+            ...(environmentDevelopment ? { port: process.env.DB_port } : {})
         }
 
     }

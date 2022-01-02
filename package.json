@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "lab -v ./tests",
-    "start:dev": "nodemon ./src/index.js",
+    "start:dev": "nodemon ./src/index.js --env development",
     "start": "node ./src/index.js",
     "migration": "npx knex migrate:latest"
   },
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.2.1",
+    "dotenv": "^10.0.0",
     "faker": "^5.5.3",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
