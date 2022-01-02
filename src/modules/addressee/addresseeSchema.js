@@ -16,7 +16,7 @@ exports.addresseeSchema = Joi.object({
             .required()
             .email({ minDomainSegments: 2 })
             .error(new Error(errors.validEmail)),
-    phoneNumber: Joi.string().length(11).pattern(/^[0-9]+$/).required()
+    phoneNumber: Joi.string().max(13).pattern(/^[0-9]+$/).required()
             .error(new Error(errors.validPhoneNumber)),
     pushUserId: Joi.string().length(8).required()
             .error(new Error(errors.validPushUserId))

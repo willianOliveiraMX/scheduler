@@ -4,7 +4,7 @@ const Hapi = require("@hapi/hapi");
 const knex = require("knex");
 const knexConfig = require("../knexfile");
 
-const init = async () => {
+exports.init = async () => {
 
     const database = knex({ ...knexConfig.development });
 
@@ -23,23 +23,17 @@ const init = async () => {
     server.route({
         method: 'GET',
         path: '/',
-        handler: async (request, h) => {
-            // Knex("message").select("text", "status").then((results) => {
-            //     console.log(results);
-            // })
-            const a = await request.database.select("description").from("communication_type");
-            console.log(a);
-            return 'Hello World!';
+        handler: async (request, reply) => {
+            return reply.response({ content: "No content here" }) ;
         },
     });
 
-    await server.start();
     console.log('Server running on %s', server.info.uri);
+    server.start();
+    return server;
 };
 
 process.on('unhandledRejection', (err) => {
     console.log(err);
     process.exit(1);
 });
-
-init();

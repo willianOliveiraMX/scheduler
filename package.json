@@ -4,17 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon ./src/server.js"
+    "test": "lab -v ./tests",
+    "start:dev": "nodemon ./src/index.js"
   },
   "author": "willianVx",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.2.1",
+    "faker": "^5.5.3",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.15",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@hapi/code": "^8.0.5",
+    "@hapi/lab": "^24.5.0"
   }
 }

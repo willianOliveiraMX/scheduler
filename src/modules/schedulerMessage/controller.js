@@ -49,7 +49,6 @@ exports.consultingMessage = {
     },
     handler: async (request, reply) => {
         const messageConsult = await service.messageService.consultingMessage(request, request.params.messageId, reply);
-        console.log(request.params.messageId);
         if (!messageConsult.messageId) {
             return reply.response({ error: errors.contentNotFind }).code(404);
         }

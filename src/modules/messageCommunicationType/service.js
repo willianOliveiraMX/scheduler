@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 exports.messageCommunicationType = {
     createMessageCommType: async (request, messageId, communicationTypeId) => {
