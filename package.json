@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "lab -v ./tests",
-    "start:dev": "nodemon ./src/index.js"
+    "start:dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
+    "migration": "npx knex migrate:latest"
   },
   "author": "willianVx",
   "license": "ISC",

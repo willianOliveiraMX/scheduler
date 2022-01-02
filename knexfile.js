@@ -8,10 +8,10 @@ module.exports = {
         client: 'postgres',
         connection: {
 
-            host: 'localhost',
+            host: 'db',
 
             user: 'postgres',
-            password: '123',
+            password: 'admin123',
 
             database: 'SchedulerData',
             charset: 'utf8',

@@ -10,7 +10,7 @@ exports.init = async () => {
 
     const server = Hapi.server({
         port: 5000,
-        host: 'localhost'
+        // host: 'localhost'
     });
 
     await server.register([ 
