@@ -71,7 +71,9 @@ CommunicationTypeId: pode receber o ID do tipo de comunicação previamente cada
 
 
 **endpoint**: /consulting/schedulerMessage/{messageId}
+
 método: GET
+
 descrição: Retorna as informações referentes a uma mensagem específica cadastrada previamente. Recebendo como argumento um ID válido.
 
   
