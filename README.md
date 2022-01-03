@@ -41,9 +41,13 @@ Primeiro, verifique sua instalação do docker e docker-compose através dos com
 A API possui dois domínios principais, addressee que lida com os destinatários e schedulerMessage responsável pelas mensagens.
 
 **Endpoints**:
+
 endpoint: /create/schedulerMessage
+
 método: POST
+
 descrição: Através desse endpoint é possível agendar uma mensagem a ser enviada.  
+
 
 Exemplo de objeto a ser enviado:
 
