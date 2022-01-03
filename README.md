@@ -107,40 +107,58 @@ descrição: Retorna as informações referentes a uma mensagem específica cada
 No objeto temos as informações de status da mensagem, que pode variar entre "waiting", "sended" e "canceled". Do tipo da mensagem e as informações dos destinatários selecionados. Entre outras informações referente a mensagem.
 
 **endpoint:** /cancel/schedulerMessage
+
 método: PUT
+
 descrição: Aqui podemos alterar o status da mensagem cadastrada para “canceled”, assim informando para um futuro serviço que a mensagem não pode ser mais enviada.
 
-No corpo da requisição deve constar um objeto com o ID da mensagem a ser cancelado. Como no exemplo a seguir:
+No corpo da requisição deve constar um objeto com o ID da mensagem a ser cancelado. 
+
+Como no exemplo a seguir:
 {
 "messageId": 2
 }
 
 **endpoint:** /create/addressee
+
 método: POST
+
 descrição: É possível adicionar manualmente um novo destinatário através desse endpoint.
+
 
 Exemplo do corpo da requisição:
 
 
 {
+
     "name": "dagoberto",
+    
     "lastName": "pereira",
+    
     "email": "dagoberto.pereira@gamil.com.br",
+    
     "phoneNumber": "11910203040",
+    
     "pushUserId": "12c45678"
+    
 }
 
 Além do nome e sobrenome, é necessário enviar um email válido e único na base de dados, número de telefone celular com o DDD sem espaços ou caracteres especiais. O pushUserId deve ser composto por 8 caracteres alpha número e não pode ser repetido na base de dados.
 
 **endpoint:** /list/addressee/?page={pageNumber}
+
 método: GET
+
 descrição: Lista dos destinatários registrados. Cada página retorna dez registros.
+
 
 
 Exemplo de retorno:
 
 {
+
 "content": [
+
     {
 
     "id": 1,
