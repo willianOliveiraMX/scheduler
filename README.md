@@ -1,4 +1,4 @@
-﻿# Scheduler Message API - Magalu**
+﻿# Scheduler Message API - Magalu
 
 Para utilizar o sistema, basta clonar o repositório e rodar localmente. É possível fazer isso através da instalação das dependências localmente ou com o docker.
 
