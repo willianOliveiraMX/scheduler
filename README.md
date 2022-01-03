@@ -1,23 +1,23 @@
 ﻿# Scheduler Message API - Magalu**
 
-Para utilizar o sistema basta clonar o repositório e rodar localmente. É possível fazer isso através da instalação das dependências localmente ou com o docker.
+Para utilizar o sistema, basta clonar o repositório e rodar localmente. É possível fazer isso através da instalação das dependências localmente ou com o docker.
 
 Se a sua escolha for rodar localmente através do docker, basta seguir os seguintes passos:
 
 
 ## Rodando localmente com docker
 
-Primeiro verifique sua instalação do docker e docker-compose através dos comandos - --abaixo. 
+Primeiro, verifique sua instalação do docker e docker-compose através dos comandos - --abaixo. 
 - **docker -v**
 - **docker-compose -v**
 - Caso não tenha um dois software instalados, por favor instale através do site Empowering App Development for Developers | Docker
-- Então por fim rode a API executando o seguinte comando na pasta principal do projeto. 
+- Então, por fim rode a API executando o seguinte comando na pasta principal do projeto. 
 **docker-compose up**
 
 
 ## Rodando localmente 
 
-*Caso não queira utilizar o docker siga os passos a seguir:*
+*Caso não queira utilizar o docker, siga os passos a seguir:*
 -   verifique a instalação do node
     
 -   instale as dependências do projeto utilizando `npm install`
@@ -58,7 +58,7 @@ Exemplo de objeto a ser enviado:
 
 Text:  É o texto da mensagem a ser enviado.
 
-TimeToSend: deve ser a data e a hora que a mensagem será enviada.
+TimeToSend: deve ser a data e a hora em que a mensagem será enviada.
 
 AddresseeIds: pode receber uma lista de ids de destinatários previamente cadastrados.
 
@@ -108,7 +108,7 @@ descrição: Retorna as informações referentes a uma mensagem específica cada
 }
 
 
-No objeto temos as informações de status da mensagem, que pode variar entre "waiting", "sended" e "canceled". Do tipo da mensagem e as informações dos destinatários selecionados. Entre outras informações referente a mensagem.
+No objeto , temos as informações de status da mensagem - que pode variar entre "waiting", "sended" e "canceled" -, do tipo da mensagem, dos destinatários selecionados, entre outros dados referentes à mensagem.
 
 **endpoint:** /cancel/schedulerMessage
 
@@ -149,7 +149,7 @@ Exemplo do corpo da requisição:
     
 }
 
-Além do nome e sobrenome, é necessário enviar um email válido e único na base de dados, número de telefone celular com o DDD sem espaços ou caracteres especiais. O pushUserId deve ser composto por 8 caracteres alpha número e não pode ser repetido na base de dados.
+Além do nome e sobrenome, é necessário enviar um email válido e único na base de dados, número de telefone celular com o DDD sem espaços ou caracteres especiais. O pushUserId deve ser composto por 8 caracteres alfanumérico e não pode ser repetido na base de dados.
 
 **endpoint:** /list/addressee/?page={pageNumber}
 
