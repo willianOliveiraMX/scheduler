@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "lab -v ./tests",
+    "test": "lab -v ./tests -e development",
     "start:dev": "nodemon ./src/index.js --env development",
     "start": "node ./src/index.js",
-    "migration": "npx knex migrate:latest"
+    "migration": "npx knex migrate:latest",
+    "seed": "npx knex seed:run --env development"
   },
   "author": "willianVx",
   "license": "ISC",

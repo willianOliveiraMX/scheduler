@@ -23,8 +23,8 @@ exports.init = async () => {
     server.decorate("request", "database", database);
 
     server.route({
-        method: 'GET',
-        path: '/',
+        method: "GET",
+        path: "/",
         handler: async (request, reply) => {
             return reply.response({ content: "No content here" }) ;
         },
