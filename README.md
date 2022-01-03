@@ -48,10 +48,12 @@ descrição: Através desse endpoint é possível agendar uma mensagem a ser env
 Exemplo de objeto a ser enviado:
 
 {
-"text": "Lorem impsum.",
-"timeToSend": "Sat Jan 03 2022 14:00:00 GMT-0300 (Horário Padrão de Brasília)",
-"addresseeIds": [1],
-"communicationTypeId": 3
+
+	"text": "Lorem impsum.",
+	"timeToSend": "Sat Jan 03 2022 14:00:00 GMT-0300 (Horário Padrão de Brasília)",
+	"addresseeIds": [1],
+	"communicationTypeId": 3
+	
 }
 
 Text:  É o texto da mensagem a ser enviado.
@@ -79,7 +81,9 @@ descrição: Retorna as informações referentes a uma mensagem específica cada
   
 **Exemplo de retorno:**
 {
-"content": {
+"content": 
+      {
+
 	 "messageId": 3,
 	"text": "Quadros super legais com 99% de desconto",
 	"timeToSend": "2022-01-03T17:00:00.000Z",
@@ -100,7 +104,7 @@ descrição: Retorna as informações referentes a uma mensagem específica cada
         "updated_at": null
         }
     ]
-}
+    }
 }
 
 
@@ -116,7 +120,9 @@ No corpo da requisição deve constar um objeto com o ID da mensagem a ser cance
 
 Como no exemplo a seguir:
 {
-"messageId": 2
+
+	"messageId": 2
+
 }
 
 **endpoint:** /create/addressee
@@ -198,6 +204,6 @@ Exemplo de retorno:
     },
 ]}
 
-## Testes automatizados:
+## Testes unitários:
 Rode os testes automatizados com o seguinte comando:
 -   `npm run test`
